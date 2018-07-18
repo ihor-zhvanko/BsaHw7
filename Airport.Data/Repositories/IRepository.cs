@@ -7,7 +7,7 @@ namespace Airport.Data.Repositories
 {
   public interface IRepository<TEntity>
   {
-    Task<IList<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null);
+    Task<IList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null);
 
     Task<TEntity> CreateAsync(TEntity entity);
 
@@ -15,8 +15,9 @@ namespace Airport.Data.Repositories
 
     void Delete(TEntity entity);
 
-    Task<TEntity> Get(int id);
+    Task<TEntity> GetAsync(int id);
     Task DeleteAsync(int id);
-    Task<IList<TEntity>> Details(Expression<Func<TEntity, bool>> filter = null);
+    Task<IList<TEntity>> DetailsAsync(Expression<Func<TEntity, bool>> filter = null);
+    Task<TEntity> DetailsAsync(int id);
   }
 }

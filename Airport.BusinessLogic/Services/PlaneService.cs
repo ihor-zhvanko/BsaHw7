@@ -10,6 +10,7 @@ using Airport.Common.DTOs;
 
 using Airport.Data.Models;
 using Airport.Data.UnitOfWork;
+using System.Threading.Tasks;
 
 namespace Airport.BusinessLogic.Services
 {
@@ -25,16 +26,16 @@ namespace Airport.BusinessLogic.Services
       : base(unitOfWork, planeDTOValidator)
     { }
 
-    public IList<PlaneDetailsDTO> GetAllDetails()
+    public async Task<IList<PlaneDetailsDTO>> GetAllDetailsAsync()
     {
-      var planes = _unitOfWork.Set<Plane>().Details();
-      return planes.Select(PlaneDetailsDTO.Create).ToList();
+      var planes = await _unitOfWork.Set<Plane>().DetailsAsync();
+      return await planes.ToAsyncEnumerable().Select(PlaneDetailsDTO.Create).ToList();
     }
 
-    public PlaneDetailsDTO GetDetails(int id)
+    public async Task<PlaneDetailsDTO> GetDetailsAsync(int id)
     {
-      var plane = _unitOfWork.Set<Plane>()
-        .Details(x => x.Id == id).FirstOrDefault();
+      var plane = await _unitOfWork.Set<Plane>()
+        .DetailsAsync(id);
 
       if (plane == null)
         throw new NotFoundException("Plane with such id was not found");

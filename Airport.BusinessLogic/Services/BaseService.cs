@@ -48,34 +48,34 @@ namespace Airport.BusinessLogic.Services
       await _unitOfWork.SaveChangesAsync();
     }
 
-    public virtual async Task Delete(int id)
+    public virtual async Task DeleteAsync(int id)
     {
       await _unitOfWork.Set<TEntity>().DeleteAsync(id);
       await _unitOfWork.SaveChangesAsync();
     }
 
-    public virtual async Task<IList<TDTO>> GetAll()
+    public virtual async Task<IList<TDTO>> GetAllAsync()
     {
-      var entities = await _unitOfWork.Set<TEntity>().Get().ToListAsync();
+      var entities = await _unitOfWork.Set<TEntity>().GetAsync();
       return Mapper.Map<IList<TDTO>>(entities);
     }
 
-    public virtual TDTO GetById(int id)
+    public virtual async Task<TDTO> GetByIdAsync(int id)
     {
-      var entity = _unitOfWork.Set<TEntity>().Get(id);
+      var entity = await _unitOfWork.Set<TEntity>().GetAsync(id);
       if (entity == null)
         throw new NotFoundException(typeof(TEntity).Name + " with such id was not found");
 
       return Mapper.Map<TDTO>(entity);
     }
 
-    public virtual TDTO Update(TDTO model)
+    public virtual async Task<TDTO> UpdateAsync(TDTO model)
     {
-      EnsureValid(model);
+      await EnsureValidAsync(model);
 
       var entity = Mapper.Map<TEntity>(model);
       entity = _unitOfWork.Set<TEntity>().Update(entity);
-      _unitOfWork.SaveChanges();
+      await _unitOfWork.SaveChangesAsync();
 
       return Mapper.Map<TDTO>(entity);
     }

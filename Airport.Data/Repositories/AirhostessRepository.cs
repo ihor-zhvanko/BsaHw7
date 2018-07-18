@@ -23,13 +23,19 @@ namespace Airport.Data.Repositories
       _dbContext = dbContext;
     }
 
-    public override async Task<IList<Airhostess>> Details(Expression<Func<Airhostess, bool>> filter = null)
+    public override async Task<IList<Airhostess>> DetailsAsync(Expression<Func<Airhostess, bool>> filter = null)
     {
       var airhostesses = _dbContext.Airhostess.Include(x => x.Crew);
       if (filter != null)
         return await airhostesses.Where(filter).ToListAsync();
 
       return await airhostesses.ToListAsync();
+    }
+
+    public override async Task<Airhostess> DetailsAsync(int id)
+    {
+      var airhostesses = _dbContext.Airhostess.Include(x => x.Crew);
+      return await airhostesses.FirstOrDefaultAsync(x => x.Id == id);
     }
   }
 }

@@ -10,13 +10,14 @@ using Airport.Common.Exceptions;
 
 using Airport.Data.Models;
 using Airport.Data.UnitOfWork;
+using System.Threading.Tasks;
 
 namespace Airport.BusinessLogic.Services
 {
   public interface ICrewService : IService<CrewDTO>
   {
-    IList<CrewDetailsDTO> GetAllDetails();
-    CrewDetailsDTO GetDetails(int id);
+    Task<IList<CrewDetailsDTO>> GetAllDetailsAsync();
+    Task<CrewDetailsDTO> GetDetailsAsync(int id);
   }
 
   public class CrewService : BaseService<CrewDTO, Crew>, ICrewService
@@ -28,16 +29,16 @@ namespace Airport.BusinessLogic.Services
       : base(unitOfWork, crewDTOValidator)
     { }
 
-    public IList<CrewDetailsDTO> GetAllDetails()
+    public async Task<IList<CrewDetailsDTO>> GetAllDetailsAsync()
     {
-      var crews = _unitOfWork.Set<Crew>().Details();
-      return crews.Select(CrewDetailsDTO.Create).ToList();
+      var crews = await _unitOfWork.Set<Crew>().DetailsAsync();
+      return await crews.ToAsyncEnumerable().Select(CrewDetailsDTO.Create).ToList();
     }
 
-    public CrewDetailsDTO GetDetails(int id)
+    public async Task<CrewDetailsDTO> GetDetailsAsync(int id)
     {
-      var crew = _unitOfWork.Set<Crew>()
-        .Details(x => x.Id == id).FirstOrDefault();
+      var crew = await _unitOfWork.Set<Crew>()
+        .DetailsAsync(id);
 
       if (crew == null)
       {

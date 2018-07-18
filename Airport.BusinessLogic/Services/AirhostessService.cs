@@ -9,13 +9,14 @@ using Airport.Data.UnitOfWork;
 
 using AutoMapper;
 using FluentValidation;
+using System.Threading.Tasks;
 
 namespace Airport.BusinessLogic.Services
 {
   public interface IAirhostessService : IService<AirhostessDTO>
   {
-    IList<AirhostessDTO> GetByCrewId(int crewId);
-    void AssignToCrew(IList<int> airhostessIds, int crewId);
+    Task<IList<AirhostessDTO>> GetByCrewIdAsync(int crewId);
+    Task AssignToCrewAsync(IList<int> airhostessIds, int crewId);
   }
 
   public class AirhostessService : BaseService<AirhostessDTO, Airhostess>, IAirhostessService
@@ -24,26 +25,27 @@ namespace Airport.BusinessLogic.Services
       : base(unitOfWork, airhostessDTOValidator)
     { }
 
-    public IList<AirhostessDTO> GetByCrewId(int crewId)
+    public async Task<IList<AirhostessDTO>> GetByCrewIdAsync(int crewId)
     {
-      var airhostesses = _unitOfWork.Set<Airhostess>().Get((x) => x.CrewId == crewId);
+      var airhostesses = await _unitOfWork.Set<Airhostess>().GetAsync((x) => x.CrewId == crewId);
 
       return Mapper.Map<IList<AirhostessDTO>>(airhostesses);
     }
 
-    public void AssignToCrew(IList<int> airhostessIds, int crewId)
+    public async Task AssignToCrewAsync(IList<int> airhostessIds, int crewId)
     {
-      var toUpdate = _unitOfWork.Set<Airhostess>()
-        .Get(x => airhostessIds.Any(y => x.Id == y) || x.CrewId == crewId).ToList();
+      var toUpdate = await _unitOfWork.Set<Airhostess>()
+        .GetAsync(x => airhostessIds.Any(y => x.Id == y) || x.CrewId == crewId);
+
       foreach (var item in toUpdate)
       {
-        if (airhostessIds.Any(x => x == item.Id))
+        if (await airhostessIds.ToAsyncEnumerable().Any(x => x == item.Id))
           item.CrewId = crewId;
         else
           item.CrewId = null;
 
         _unitOfWork.Set<Airhostess>().Update(item);
-        _unitOfWork.SaveChanges();
+        await _unitOfWork.SaveChangesAsync();
       }
     }
   }

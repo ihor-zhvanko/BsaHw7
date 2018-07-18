@@ -24,13 +24,19 @@ namespace Airport.Data.Repositories
       _dbContext = dbContext;
     }
 
-    public override async Task<IList<Crew>> Details(Expression<Func<Crew, bool>> filter = null)
+    public override async Task<IList<Crew>> DetailsAsync(Expression<Func<Crew, bool>> filter = null)
     {
       var crews = _dbContext.Crew.Include(x => x.Airhostesses).Include(x => x.Pilot);
       if (filter != null)
         return await crews.Where(filter).ToListAsync();
 
       return await crews.ToListAsync();
+    }
+
+    public override async Task<Crew> DetailsAsync(int id)
+    {
+      var crews = _dbContext.Crew.Include(x => x.Airhostesses).Include(x => x.Pilot);
+      return await crews.FirstOrDefaultAsync(x => x.Id == id);
     }
   }
 }

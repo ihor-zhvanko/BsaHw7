@@ -24,10 +24,15 @@ namespace Airport.Data.Repositories
       _dbContext = dbContext;
     }
 
-    public override async Task<IList<Flight>> Details(Expression<Func<Flight, bool>> filter = null)
+    public override async Task<IList<Flight>> DetailsAsync(Expression<Func<Flight, bool>> filter = null)
     {
       // could be implemented if needed
       return await _dbContext.Flight.ToListAsync();
+    }
+
+    public override async Task<Flight> DetailsAsync(int id)
+    {
+      return await _dbContext.Flight.FirstOrDefaultAsync(x => x.Id == id);
     }
   }
 }

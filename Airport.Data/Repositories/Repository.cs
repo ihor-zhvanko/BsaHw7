@@ -18,7 +18,7 @@ namespace Airport.Data.Repositories
       _dbContext = dbContext;
     }
 
-    public virtual async Task<IList<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null)
+    public virtual async Task<IList<TEntity>> GetAsync(Expression<Func<TEntity, bool>> filter = null)
     {
       if (filter != null)
         return await _dbContext.Set<TEntity>().Where(filter).ToListAsync();
@@ -50,12 +50,14 @@ namespace Airport.Data.Repositories
         _dbContext.Remove(entity);
     }
 
-    public virtual async Task<TEntity> Get(int id)
+    public virtual async Task<TEntity> GetAsync(int id)
     {
       var result = await _dbContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id);
       return result;
     }
 
-    public abstract Task<IList<TEntity>> Details(Expression<Func<TEntity, bool>> filter = null);
+    public abstract Task<IList<TEntity>> DetailsAsync(Expression<Func<TEntity, bool>> filter = null);
+
+    public abstract Task<TEntity> DetailsAsync(int id);
   }
 }

@@ -10,14 +10,15 @@ using Airport.Common.Exceptions;
 
 using Airport.Data.Models;
 using Airport.Data.UnitOfWork;
+using System.Threading.Tasks;
 
 namespace Airport.BusinessLogic.Services
 {
   public interface IDepartureService : IService<DepartureDTO>
   {
-    IList<DepartureDetailsDTO> GetAllDetails();
-    DepartureDetailsDTO GetDetails(int id);
-    IList<DepartureDTO> GetByCrewId(int crewId);
+    Task<IList<DepartureDetailsDTO>> GetAllDetailsAsync();
+    Task<DepartureDetailsDTO> GetDetailsAsync(int id);
+    Task<IList<DepartureDTO>> GetByCrewIdAsync(int crewId);
   }
 
   public class DepartureService : BaseService<DepartureDTO, Departure>, IDepartureService
@@ -28,47 +29,43 @@ namespace Airport.BusinessLogic.Services
     ) : base(unitOfWork, departureDTOValidator)
     { }
 
-    public IList<DepartureDetailsDTO> GetAllDetails()
+    public async Task<IList<DepartureDetailsDTO>> GetAllDetailsAsync()
     {
-      var departures = _unitOfWork.Set<Departure>().Details();
+      var departures = await _unitOfWork.Set<Departure>().DetailsAsync();
 
-      var crews = _unitOfWork.Set<Crew>()
-        .Details(x => departures.Any(y => x.Id == y.CrewId))
-        .Select(CrewDetailsDTO.Create);
+      var crews = await _unitOfWork.Set<Crew>()
+        .DetailsAsync(x => departures.Any(y => x.Id == y.CrewId));
 
-      var planes = _unitOfWork.Set<Plane>()
-        .Details(x => departures.Any(y => x.Id == y.PlaneId))
-        .Select(PlaneDetailsDTO.Create);
+      var planes = await _unitOfWork.Set<Plane>()
+        .DetailsAsync(x => departures.Any(y => x.Id == y.PlaneId));
 
-      return departures.Select(x =>
+      return await departures.ToAsyncEnumerable().Select(x =>
       {
         var plane = planes.First(p => p.Id == x.PlaneId);
         var crew = crews.First(c => c.Id == x.CrewId);
-        return DepartureDetailsDTO.Create(x, plane, crew);
+        return DepartureDetailsDTO.Create(x, PlaneDetailsDTO.Create(plane), CrewDetailsDTO.Create(crew));
       }).ToList();
     }
 
-    public DepartureDetailsDTO GetDetails(int id)
+    public async Task<DepartureDetailsDTO> GetDetailsAsync(int id)
     {
-      var departure = _unitOfWork.Set<Departure>()
-        .Details(x => x.Id == id).FirstOrDefault();
+      var departure = await _unitOfWork.Set<Departure>()
+        .DetailsAsync(id);
 
       if (departure == null)
         throw new NotFoundException("Departure with such id was not found");
 
-      var crew = _unitOfWork.Set<Crew>()
-        .Details(x => x.Id == departure.CrewId)
-        .Select(CrewDetailsDTO.Create).First();
-      var plane = _unitOfWork.Set<Plane>()
-        .Details(x => x.Id == departure.PlaneId)
-        .Select(PlaneDetailsDTO.Create).First();
+      var crew = await _unitOfWork.Set<Crew>()
+        .DetailsAsync(departure.CrewId);
+      var plane = await _unitOfWork.Set<Plane>()
+        .DetailsAsync(departure.PlaneId);
 
-      return DepartureDetailsDTO.Create(departure, plane, crew);
+      return DepartureDetailsDTO.Create(departure, PlaneDetailsDTO.Create(plane), CrewDetailsDTO.Create(crew));
     }
 
-    public IList<DepartureDTO> GetByCrewId(int crewId)
+    public async Task<IList<DepartureDTO>> GetByCrewIdAsync(int crewId)
     {
-      var departures = _unitOfWork.Set<Departure>().Get(x => x.CrewId == crewId).ToList();
+      var departures = await _unitOfWork.Set<Departure>().GetAsync(x => x.CrewId == crewId);
       return Mapper.Map<IList<DepartureDTO>>(departures);
     }
   }

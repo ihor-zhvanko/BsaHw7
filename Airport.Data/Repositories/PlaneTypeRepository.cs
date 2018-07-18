@@ -24,7 +24,7 @@ namespace Airport.Data.Repositories
       _dbContext = dbContext;
     }
 
-    public override async Task<IList<PlaneType>> Details(Expression<Func<PlaneType, bool>> filter = null)
+    public override async Task<IList<PlaneType>> DetailsAsync(Expression<Func<PlaneType, bool>> filter = null)
     {
       // could be implemented if needed
       var planeTypes = _dbContext.PlaneType;
@@ -32,6 +32,11 @@ namespace Airport.Data.Repositories
         return await planeTypes.Where(filter).ToListAsync();
 
       return await planeTypes.ToListAsync();
+    }
+
+    public override async Task<PlaneType> DetailsAsync(int id)
+    {
+      return await _dbContext.PlaneType.FirstOrDefaultAsync(x => x.Id == id);
     }
   }
 }
