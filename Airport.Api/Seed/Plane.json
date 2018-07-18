@@ -1,0 +1,72 @@
+[
+  {
+    "Id": 1,
+    "Name": "Boeing House Colors",
+    "PlaneTypeId": 1,
+    "ReleaseDate": "1999-07-08 11:41:16",
+    "ServiceLife": "3650:00:00"
+  },
+  {
+    "Id": 2,
+    "Name": "Airbus A380 (British Airways)",
+    "PlaneTypeId": 2,
+    "ReleaseDate": "1999-10-01 02:01:34",
+    "ServiceLife": "8760:00:00"
+  },
+  {
+    "Id": 3,
+    "Name": "Icelandair Vatnajökull",
+    "PlaneTypeId": 3,
+    "ReleaseDate": "2005-09-10 01:43:15",
+    "ServiceLife": "10585:00:00"
+  },
+  {
+    "Id": 4,
+    "Name": "KLM PH-BHA",
+    "PlaneTypeId": 4,
+    "ReleaseDate": "2003-10-15 11:26:44",
+    "ServiceLife": "5475:00:00"
+  },
+  {
+    "Id": 5,
+    "Name": "Qantas VH-ZNA",
+    "PlaneTypeId": 1,
+    "ReleaseDate": "1999-07-31 13:54:59",
+    "ServiceLife": "3650:00:00"
+  },
+  {
+    "Id": 6,
+    "Name": "Boeing House Colors",
+    "PlaneTypeId": 2,
+    "ReleaseDate": "2005-04-02 16:41:02",
+    "ServiceLife": "8760:00:00"
+  },
+  {
+    "Id": 7,
+    "Name": "Airbus A380 (British Airways)",
+    "PlaneTypeId": 3,
+    "ReleaseDate": "2004-10-02 06:05:26",
+    "ServiceLife": "7665:00:00"
+  },
+  {
+    "Id": 8,
+    "Name": "Icelandair Vatnajökull",
+    "PlaneTypeId": 4,
+    "ReleaseDate": "2008-05-16 20:45:39",
+    "ServiceLife": "10585:00:00"
+  },
+  {
+    "Id": 9,
+    "Name": "KLM PH-BHA",
+    "PlaneTypeId": 1,
+    "ReleaseDate": "1996-11-14 00:50:04",
+    "ServiceLife": "4380:00:00"
+  },
+  {
+    "Id": 10,
+    "Name": "Qantas VH-ZNA",
+    "PlaneTypeId": 2,
+    "ReleaseDate": "2006-08-02 11:29:19",
+    "ServiceLife": "9855:00:00"
+  }
+]

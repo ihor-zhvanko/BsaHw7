@@ -1,0 +1,142 @@
+[
+  {
+    "Id": 1,
+    "FirstName": "Lilyan",
+    "LastName": "Rodnight",
+    "BirthDate": "1980-04-29",
+    "CrewId": 10
+  },
+  {
+    "Id": 2,
+    "FirstName": "Tris",
+    "LastName": "O'Looney",
+    "BirthDate": "1975-04-07",
+    "CrewId": 10
+  },
+  {
+    "Id": 3,
+    "FirstName": "Camel",
+    "LastName": "Shackell",
+    "BirthDate": "1972-07-08",
+    "CrewId": 9
+  },
+  {
+    "Id": 4,
+    "FirstName": "Ivy",
+    "LastName": "Beche",
+    "BirthDate": "1979-01-22",
+    "CrewId": 9
+  },
+  {
+    "Id": 5,
+    "FirstName": "Stephani",
+    "LastName": "Gater",
+    "BirthDate": "1984-09-26",
+    "CrewId": 8
+  },
+  {
+    "Id": 6,
+    "FirstName": "Harrison",
+    "LastName": "Valentetti",
+    "BirthDate": "1977-07-15",
+    "CrewId": 8
+  },
+  {
+    "Id": 7,
+    "FirstName": "Shane",
+    "LastName": "Iban",
+    "BirthDate": "1977-05-05",
+    "CrewId": 7
+  },
+  {
+    "Id": 8,
+    "FirstName": "Vincent",
+    "LastName": "Nobes",
+    "BirthDate": "1973-12-06",
+    "CrewId": 7
+  },
+  {
+    "Id": 9,
+    "FirstName": "Lauraine",
+    "LastName": "Burdell",
+    "BirthDate": "1983-10-13",
+    "CrewId": 6
+  },
+  {
+    "Id": 10,
+    "FirstName": "Alex",
+    "LastName": "Corpes",
+    "BirthDate": "1982-04-06",
+    "CrewId": 6
+  },
+  {
+    "Id": 11,
+    "FirstName": "Esta",
+    "LastName": "Featherston",
+    "BirthDate": "1979-10-31",
+    "CrewId": 5
+  },
+  {
+    "Id": 12,
+    "FirstName": "Kizzee",
+    "LastName": "Parsisson",
+    "BirthDate": "1978-12-17",
+    "CrewId": 5
+  },
+  {
+    "Id": 13,
+    "FirstName": "Patsy",
+    "LastName": "Duffy",
+    "BirthDate": "1978-06-30",
+    "CrewId": 4
+  },
+  {
+    "Id": 14,
+    "FirstName": "Walsh",
+    "LastName": "Josovich",
+    "BirthDate": "1983-07-15",
+    "CrewId": 4
+  },
+  {
+    "Id": 15,
+    "FirstName": "Clare",
+    "LastName": "Kibbee",
+    "BirthDate": "1978-11-08",
+    "CrewId": 3
+  },
+  {
+    "Id": 16,
+    "FirstName": "Pegeen",
+    "LastName": "Paudin",
+    "BirthDate": "1973-11-19",
+    "CrewId": 3
+  },
+  {
+    "Id": 17,
+    "FirstName": "Thoma",
+    "LastName": "Blackett",
+    "BirthDate": "1983-11-06",
+    "CrewId": 2
+  },
+  {
+    "Id": 18,
+    "FirstName": "Halette",
+    "LastName": "Tingly",
+    "BirthDate": "1970-07-24",
+    "CrewId": 2
+  },
+  {
+    "Id": 19,
+    "FirstName": "Forester",
+    "LastName": "Hoggan",
+    "BirthDate": "1986-12-13",
+    "CrewId": 1
+  },
+  {
+    "Id": 20,
+    "FirstName": "Jules",
+    "LastName": "Stuckley",
+    "BirthDate": "1977-03-12",
+    "CrewId": 1
+  }
+]

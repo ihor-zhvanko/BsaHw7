@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "Price": 769.25,
+    "FlightId": 1
+  },
+  {
+    "Id": 2,
+    "Price": 921.78,
+    "FlightId": 2
+  },
+  {
+    "Id": 3,
+    "Price": 458.57,
+    "FlightId": 3
+  },
+  {
+    "Id": 4,
+    "Price": 954.72,
+    "FlightId": 4
+  },
+  {
+    "Id": 5,
+    "Price": 135.88,
+    "FlightId": 5
+  },
+  {
+    "Id": 6,
+    "Price": 830.97,
+    "FlightId": 6
+  },
+  {
+    "Id": 7,
+    "Price": 105.52,
+    "FlightId": 7
+  },
+  {
+    "Id": 8,
+    "Price": 700.82,
+    "FlightId": 8
+  },
+  {
+    "Id": 9,
+    "Price": 621.85,
+    "FlightId": 9
+  },
+  {
+    "Id": 10,
+    "Price": 289.0,
+    "FlightId": 10
+  },
+  {
+    "Id": 11,
+    "Price": 514.41,
+    "FlightId": 1
+  },
+  {
+    "Id": 12,
+    "Price": 130.97,
+    "FlightId": 2
+  },
+  {
+    "Id": 13,
+    "Price": 325.74,
+    "FlightId": 3
+  },
+  {
+    "Id": 14,
+    "Price": 434.12,
+    "FlightId": 4
+  },
+  {
+    "Id": 15,
+    "Price": 621.91,
+    "FlightId": 5
+  },
+  {
+    "Id": 16,
+    "Price": 692.19,
+    "FlightId": 6
+  },
+  {
+    "Id": 17,
+    "Price": 951.79,
+    "FlightId": 7
+  },
+  {
+    "Id": 18,
+    "Price": 703.88,
+    "FlightId": 8
+  },
+  {
+    "Id": 19,
+    "Price": 469.8,
+    "FlightId": 9
+  },
+  {
+    "Id": 20,
+    "Price": 320.83,
+    "FlightId": 10
+  }
+]

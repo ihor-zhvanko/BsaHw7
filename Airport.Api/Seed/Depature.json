@@ -1,0 +1,352 @@
+[
+  {
+    "Id": 1,
+    "Date": "2018-06-16 22:25:48",
+    "FlightId": 1,
+    "CrewId": 1,
+    "PlaneId": 1
+  },
+  {
+    "Id": 2,
+    "Date": "2018-08-11 01:20:19",
+    "FlightId": 2,
+    "CrewId": 2,
+    "PlaneId": 2
+  },
+  {
+    "Id": 3,
+    "Date": "2018-06-12 04:59:32",
+    "FlightId": 3,
+    "CrewId": 3,
+    "PlaneId": 3
+  },
+  {
+    "Id": 4,
+    "Date": "2018-08-28 07:45:57",
+    "FlightId": 4,
+    "CrewId": 4,
+    "PlaneId": 4
+  },
+  {
+    "Id": 5,
+    "Date": "2018-06-09 08:48:12",
+    "FlightId": 5,
+    "CrewId": 5,
+    "PlaneId": 5
+  },
+  {
+    "Id": 6,
+    "Date": "2018-07-02 23:03:00",
+    "FlightId": 6,
+    "CrewId": 6,
+    "PlaneId": 6
+  },
+  {
+    "Id": 7,
+    "Date": "2018-08-30 14:04:44",
+    "FlightId": 7,
+    "CrewId": 7,
+    "PlaneId": 7
+  },
+  {
+    "Id": 8,
+    "Date": "2018-08-04 11:23:40",
+    "FlightId": 8,
+    "CrewId": 8,
+    "PlaneId": 8
+  },
+  {
+    "Id": 9,
+    "Date": "2018-06-19 12:13:40",
+    "FlightId": 9,
+    "CrewId": 9,
+    "PlaneId": 9
+  },
+  {
+    "Id": 10,
+    "Date": "2018-09-02 13:43:28",
+    "FlightId": 10,
+    "CrewId": 10,
+    "PlaneId": 10
+  },
+  {
+    "Id": 11,
+    "Date": "2018-06-04 02:51:48",
+    "FlightId": 1,
+    "CrewId": 11,
+    "PlaneId": 1
+  },
+  {
+    "Id": 12,
+    "Date": "2018-09-28 09:21:33",
+    "FlightId": 2,
+    "CrewId": 12,
+    "PlaneId": 2
+  },
+  {
+    "Id": 13,
+    "Date": "2018-08-28 07:55:21",
+    "FlightId": 3,
+    "CrewId": 13,
+    "PlaneId": 3
+  },
+  {
+    "Id": 14,
+    "Date": "2018-07-29 20:33:06",
+    "FlightId": 4,
+    "CrewId": 14,
+    "PlaneId": 4
+  },
+  {
+    "Id": 15,
+    "Date": "2018-08-05 20:28:58",
+    "FlightId": 5,
+    "CrewId": 15,
+    "PlaneId": 5
+  },
+  {
+    "Id": 16,
+    "Date": "2018-06-16 02:54:32",
+    "FlightId": 6,
+    "CrewId": 16,
+    "PlaneId": 6
+  },
+  {
+    "Id": 17,
+    "Date": "2018-07-10 11:40:25",
+    "FlightId": 7,
+    "CrewId": 17,
+    "PlaneId": 7
+  },
+  {
+    "Id": 18,
+    "Date": "2018-08-17 01:26:20",
+    "FlightId": 8,
+    "CrewId": 18,
+    "PlaneId": 8
+  },
+  {
+    "Id": 19,
+    "Date": "2018-07-28 08:27:34",
+    "FlightId": 9,
+    "CrewId": 19,
+    "PlaneId": 9
+  },
+  {
+    "Id": 20,
+    "Date": "2018-09-15 00:40:36",
+    "FlightId": 10,
+    "CrewId": 20,
+    "PlaneId": 10
+  },
+  {
+    "Id": 21,
+    "Date": "2018-07-21 21:09:24",
+    "FlightId": 1,
+    "CrewId": 21,
+    "PlaneId": 1
+  },
+  {
+    "Id": 22,
+    "Date": "2018-09-22 09:01:33",
+    "FlightId": 2,
+    "CrewId": 22,
+    "PlaneId": 2
+  },
+  {
+    "Id": 23,
+    "Date": "2018-08-19 19:05:56",
+    "FlightId": 3,
+    "CrewId": 23,
+    "PlaneId": 3
+  },
+  {
+    "Id": 24,
+    "Date": "2018-09-14 08:34:56",
+    "FlightId": 4,
+    "CrewId": 24,
+    "PlaneId": 4
+  },
+  {
+    "Id": 25,
+    "Date": "2018-09-11 06:13:17",
+    "FlightId": 5,
+    "CrewId": 25,
+    "PlaneId": 5
+  },
+  {
+    "Id": 26,
+    "Date": "2018-06-28 16:10:43",
+    "FlightId": 6,
+    "CrewId": 26,
+    "PlaneId": 6
+  },
+  {
+    "Id": 27,
+    "Date": "2018-06-05 01:31:29",
+    "FlightId": 7,
+    "CrewId": 27,
+    "PlaneId": 7
+  },
+  {
+    "Id": 28,
+    "Date": "2018-09-04 13:04:33",
+    "FlightId": 8,
+    "CrewId": 28,
+    "PlaneId": 8
+  },
+  {
+    "Id": 29,
+    "Date": "2018-07-24 09:21:19",
+    "FlightId": 9,
+    "CrewId": 29,
+    "PlaneId": 9
+  },
+  {
+    "Id": 30,
+    "Date": "2018-07-24 04:39:00",
+    "FlightId": 10,
+    "CrewId": 30,
+    "PlaneId": 10
+  },
+  {
+    "Id": 31,
+    "Date": "2018-06-24 14:56:41",
+    "FlightId": 1,
+    "CrewId": 31,
+    "PlaneId": 1
+  },
+  {
+    "Id": 32,
+    "Date": "2018-09-02 02:10:22",
+    "FlightId": 2,
+    "CrewId": 32,
+    "PlaneId": 2
+  },
+  {
+    "Id": 33,
+    "Date": "2018-08-16 13:43:53",
+    "FlightId": 3,
+    "CrewId": 33,
+    "PlaneId": 3
+  },
+  {
+    "Id": 34,
+    "Date": "2018-09-05 00:36:22",
+    "FlightId": 4,
+    "CrewId": 34,
+    "PlaneId": 4
+  },
+  {
+    "Id": 35,
+    "Date": "2018-06-15 18:59:11",
+    "FlightId": 5,
+    "CrewId": 35,
+    "PlaneId": 5
+  },
+  {
+    "Id": 36,
+    "Date": "2018-06-17 16:36:35",
+    "FlightId": 6,
+    "CrewId": 36,
+    "PlaneId": 6
+  },
+  {
+    "Id": 37,
+    "Date": "2018-07-18 04:43:26",
+    "FlightId": 7,
+    "CrewId": 37,
+    "PlaneId": 7
+  },
+  {
+    "Id": 38,
+    "Date": "2018-06-09 11:45:09",
+    "FlightId": 8,
+    "CrewId": 38,
+    "PlaneId": 8
+  },
+  {
+    "Id": 39,
+    "Date": "2018-08-25 22:31:17",
+    "FlightId": 9,
+    "CrewId": 39,
+    "PlaneId": 9
+  },
+  {
+    "Id": 40,
+    "Date": "2018-08-05 04:19:40",
+    "FlightId": 10,
+    "CrewId": 40,
+    "PlaneId": 10
+  },
+  {
+    "Id": 41,
+    "Date": "2018-08-11 10:01:48",
+    "FlightId": 1,
+    "CrewId": 41,
+    "PlaneId": 1
+  },
+  {
+    "Id": 42,
+    "Date": "2018-09-09 10:32:21",
+    "FlightId": 2,
+    "CrewId": 42,
+    "PlaneId": 2
+  },
+  {
+    "Id": 43,
+    "Date": "2018-09-09 06:33:26",
+    "FlightId": 3,
+    "CrewId": 43,
+    "PlaneId": 3
+  },
+  {
+    "Id": 44,
+    "Date": "2018-08-24 03:14:33",
+    "FlightId": 4,
+    "CrewId": 44,
+    "PlaneId": 4
+  },
+  {
+    "Id": 45,
+    "Date": "2018-07-25 17:07:02",
+    "FlightId": 5,
+    "CrewId": 45,
+    "PlaneId": 5
+  },
+  {
+    "Id": 46,
+    "Date": "2018-06-05 10:27:25",
+    "FlightId": 6,
+    "CrewId": 46,
+    "PlaneId": 6
+  },
+  {
+    "Id": 47,
+    "Date": "2018-08-02 21:14:51",
+    "FlightId": 7,
+    "CrewId": 47,
+    "PlaneId": 7
+  },
+  {
+    "Id": 48,
+    "Date": "2018-06-29 16:52:49",
+    "FlightId": 8,
+    "CrewId": 48,
+    "PlaneId": 8
+  },
+  {
+    "Id": 49,
+    "Date": "2018-08-31 16:20:48",
+    "FlightId": 9,
+    "CrewId": 49,
+    "PlaneId": 9
+  },
+  {
+    "Id": 50,
+    "Date": "2018-06-13 07:44:18",
+    "FlightId": 10,
+    "CrewId": 50,
+    "PlaneId": 10
+  }
+]

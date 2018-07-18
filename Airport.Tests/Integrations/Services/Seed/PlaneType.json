@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Model": "B737-800",
+    "Seats": 133,
+    "Carrying": 6732
+  },
+  {
+    "Id": 2,
+    "Model": "G-XLEA",
+    "Seats": 298,
+    "Carrying": 9122
+  },
+  {
+    "Id": 3,
+    "Model": "B757-200",
+    "Seats": 193,
+    "Carrying": 8270
+  },
+  {
+    "Id": 4,
+    "Model": "B787-9",
+    "Seats": 202,
+    "Carrying": 6632
+  }
+]

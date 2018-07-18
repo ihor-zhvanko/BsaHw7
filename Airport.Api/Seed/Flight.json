@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "Number": "CG8Z48",
+    "DeparturePlace": "Novaya Usman’",
+    "DepartureTime": "1981-08-05 23:23:02",
+    "ArrivalPlace": "Dengok",
+    "ArrivalTime": "1981-08-05 07:23:02"
+  },
+  {
+    "Id": 2,
+    "Number": "RB7X4M",
+    "DeparturePlace": "Duas Igrejas",
+    "DepartureTime": "1979-02-14 07:26:33",
+    "ArrivalPlace": "Labuhanlalar",
+    "ArrivalTime": "1979-02-14 15:26:33"
+  },
+  {
+    "Id": 3,
+    "Number": "9UDYWL",
+    "DeparturePlace": "San Antonio",
+    "DepartureTime": "1980-05-13 14:09:31",
+    "ArrivalPlace": "Gualán",
+    "ArrivalTime": "1980-05-13 23:09:31"
+  },
+  {
+    "Id": 4,
+    "Number": "PFORHX",
+    "DeparturePlace": "Abeokuta",
+    "DepartureTime": "1977-02-19 20:12:23",
+    "ArrivalPlace": "Perth",
+    "ArrivalTime": "1977-02-19 21:12:23"
+  },
+  {
+    "Id": 5,
+    "Number": "0WDDSG",
+    "DeparturePlace": "Binjiang",
+    "DepartureTime": "1982-06-07 21:40:53",
+    "ArrivalPlace": "Xiabuji",
+    "ArrivalTime": "1982-06-07 10:40:53"
+  },
+  {
+    "Id": 6,
+    "Number": "FJEDX4",
+    "DeparturePlace": "Bayan Gol",
+    "DepartureTime": "1984-12-22 13:52:18",
+    "ArrivalPlace": "Dikhil",
+    "ArrivalTime": "1984-12-22 05:52:18"
+  },
+  {
+    "Id": 7,
+    "Number": "36CQIW",
+    "DeparturePlace": "Saronída",
+    "DepartureTime": "1974-06-14 00:15:57",
+    "ArrivalPlace": "Valeirinha",
+    "ArrivalTime": "1974-06-14 06:15:57"
+  },
+  {
+    "Id": 8,
+    "Number": "1IWXZE",
+    "DeparturePlace": "Niquero",
+    "DepartureTime": "1979-02-21 17:29:18",
+    "ArrivalPlace": "Thongwa",
+    "ArrivalTime": "1979-02-21 21:29:18"
+  },
+  {
+    "Id": 9,
+    "Number": "D6FNO8",
+    "DeparturePlace": "Skalbmierz",
+    "DepartureTime": "1972-01-21 13:41:25",
+    "ArrivalPlace": "Floriano",
+    "ArrivalTime": "1972-01-21 15:41:25"
+  },
+  {
+    "Id": 10,
+    "Number": "V7HQYU",
+    "DeparturePlace": "Kaffrine",
+    "DepartureTime": "1972-10-31 02:53:26",
+    "ArrivalPlace": "Jajar",
+    "ArrivalTime": "1972-10-31 05:53:26"
+  }
+]
