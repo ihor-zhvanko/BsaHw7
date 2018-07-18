@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 using Airport.Data.MockData;
 using Airport.Data.Models;
-
+using System.Threading.Tasks;
 
 namespace Airport.Data.Repositories
 {
@@ -18,17 +18,17 @@ namespace Airport.Data.Repositories
       _dbContext = dbContext;
     }
 
-    public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null)
+    public virtual async Task<IList<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null)
     {
       if (filter != null)
-        return _dbContext.Set<TEntity>().Where(filter);
+        return await _dbContext.Set<TEntity>().Where(filter).ToListAsync();
 
-      return _dbContext.Set<TEntity>();
+      return await _dbContext.Set<TEntity>().ToListAsync();
     }
 
-    public virtual TEntity Create(TEntity entity)
+    public virtual async Task<TEntity> CreateAsync(TEntity entity)
     {
-      _dbContext.Set<TEntity>().Add(entity);
+      await _dbContext.Set<TEntity>().AddAsync(entity);
       return entity;
     }
 
@@ -43,19 +43,19 @@ namespace Airport.Data.Repositories
       _dbContext.Set<TEntity>().Remove(entity);
     }
 
-    public virtual void Delete(int id)
+    public virtual async Task DeleteAsync(int id)
     {
-      var entity = _dbContext.Set<TEntity>().FirstOrDefault(x => x.Id == id);
+      var entity = await _dbContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id);
       if (entity != null)
         _dbContext.Remove(entity);
     }
 
-    public virtual TEntity Get(int id)
+    public virtual async Task<TEntity> Get(int id)
     {
-      var result = _dbContext.Set<TEntity>().FirstOrDefault(x => x.Id == id);
+      var result = await _dbContext.Set<TEntity>().FirstOrDefaultAsync(x => x.Id == id);
       return result;
     }
 
-    public abstract IEnumerable<TEntity> Details(Expression<Func<TEntity, bool>> filter = null);
+    public abstract Task<IList<TEntity>> Details(Expression<Func<TEntity, bool>> filter = null);
   }
 }

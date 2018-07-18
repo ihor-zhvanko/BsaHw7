@@ -1,21 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace Airport.Data.Repositories
 {
   public interface IRepository<TEntity>
   {
-    IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null);
+    Task<IList<TEntity>> Get(Expression<Func<TEntity, bool>> filter = null);
 
-    TEntity Create(TEntity entity);
+    Task<TEntity> CreateAsync(TEntity entity);
 
     TEntity Update(TEntity entity);
 
     void Delete(TEntity entity);
 
-    TEntity Get(int id);
-    void Delete(int id);
-    IEnumerable<TEntity> Details(Expression<Func<TEntity, bool>> filter = null);
+    Task<TEntity> Get(int id);
+    Task DeleteAsync(int id);
+    Task<IList<TEntity>> Details(Expression<Func<TEntity, bool>> filter = null);
   }
 }

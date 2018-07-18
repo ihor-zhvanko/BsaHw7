@@ -6,6 +6,7 @@ using AutoMapper;
 using FluentValidation;
 
 using Airport.Common.Exceptions;
+using System.Threading.Tasks;
 
 namespace Airport.BusinessLogic.Services
 {
@@ -20,42 +21,42 @@ namespace Airport.BusinessLogic.Services
       _dtoValidator = dtoValidator;
     }
 
-    protected void EnsureValid(TDTO model)
+    protected async Task EnsureValidAsync(TDTO model)
     {
-      var validationResult = _dtoValidator.Validate(model);
+      var validationResult = await _dtoValidator.ValidateAsync(model);
       if (!validationResult.IsValid)
       {
         throw new BadRequestException(validationResult.Errors);
       }
     }
 
-    public TDTO Create(TDTO model)
+    public async Task<TDTO> CreateAsync(TDTO model)
     {
-      EnsureValid(model);
+      await EnsureValidAsync(model);
 
       var entity = Mapper.Map<TEntity>(model);
-      entity = _unitOfWork.Set<TEntity>().Create(entity);
-      _unitOfWork.SaveChanges();
+      entity = await _unitOfWork.Set<TEntity>().CreateAsync(entity);
+      await _unitOfWork.SaveChangesAsync();
 
       return Mapper.Map<TDTO>(entity);
     }
 
-    public virtual void Delete(TDTO model)
+    public virtual async Task DeleteAsync(TDTO model)
     {
       var entity = Mapper.Map<TEntity>(model);
       _unitOfWork.Set<TEntity>().Delete(entity);
-      _unitOfWork.SaveChanges();
+      await _unitOfWork.SaveChangesAsync();
     }
 
-    public virtual void Delete(int id)
+    public virtual async Task Delete(int id)
     {
-      _unitOfWork.Set<TEntity>().Delete(id);
-      _unitOfWork.SaveChanges();
+      await _unitOfWork.Set<TEntity>().DeleteAsync(id);
+      await _unitOfWork.SaveChangesAsync();
     }
 
-    public virtual IList<TDTO> GetAll()
+    public virtual async Task<IList<TDTO>> GetAll()
     {
-      var entities = _unitOfWork.Set<TEntity>().Get();
+      var entities = await _unitOfWork.Set<TEntity>().Get().ToListAsync();
       return Mapper.Map<IList<TDTO>>(entities);
     }
 

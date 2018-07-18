@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Airport.Data.MockData;
 using Airport.Data.Models;
 using Airport.Data.DatabaseContext;
+using System.Threading.Tasks;
 
 namespace Airport.Data.Repositories
 {
@@ -23,13 +24,13 @@ namespace Airport.Data.Repositories
       _dbContext = dbContext;
     }
 
-    public override IEnumerable<Pilot> Details(Expression<Func<Pilot, bool>> filter = null)
+    public override async Task<IList<Pilot>> Details(Expression<Func<Pilot, bool>> filter = null)
     {
       // could be implemented if needed
       if (filter != null)
-        return _dbContext.Pilot.Where(filter);
+        return await _dbContext.Pilot.Where(filter).ToListAsync();
 
-      return _dbContext.Pilot;
+      return await _dbContext.Pilot.ToListAsync();
     }
   }
 }
