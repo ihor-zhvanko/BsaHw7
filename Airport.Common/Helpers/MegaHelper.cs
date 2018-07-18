@@ -8,7 +8,7 @@ namespace Airport.Common.Helpers
 {
   public static class MegaDelayHelper
   {
-    public static Task<TReturn> WaitForDateTimeUsingTimer<TReturn>(
+    public static Task<TReturn> DoFakeDelayUsingTimer<TReturn>(
       double delaySeconds,
       Func<TReturn> todo
     )

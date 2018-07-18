@@ -6,6 +6,8 @@ using AutoMapper;
 using FluentValidation;
 
 using Airport.Common.Exceptions;
+using Airport.Common.Helpers;
+using Airport.Common.DTOs;
 using System.Threading.Tasks;
 
 namespace Airport.BusinessLogic.Services
@@ -56,6 +58,16 @@ namespace Airport.BusinessLogic.Services
 
     public virtual async Task<IList<TDTO>> GetAllAsync()
     {
+      if (typeof(TDTO) == typeof(FlightDTO))
+      {
+        Func<IList<TDTO>> lambdaToDelay = () =>
+        {
+          IList<TEntity> ents = _unitOfWork.Set<TEntity>().GetAsync().Result;
+          return Mapper.Map<IList<TDTO>>(ents);
+        };
+        return await MegaDelayHelper.DoFakeDelayUsingTimer(2, lambdaToDelay);
+      }
+
       var entities = await _unitOfWork.Set<TEntity>().GetAsync();
       return Mapper.Map<IList<TDTO>>(entities);
     }
