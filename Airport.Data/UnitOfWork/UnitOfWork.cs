@@ -22,26 +22,18 @@ namespace Airport.Data.UnitOfWork
     public ITicketRepository TicketRepository { get; }
 
     public UnitOfWork(
-      AirportDbContext dbContext,
-      IAirhostessRepository airhostessRepository,
-      ICrewRepository crewRepository,
-      IDepartureRepository departureRepository,
-      IFlightRepository flightRepository,
-      IPilotRepository pilotRepository,
-      IPlaneRepository planeRepository,
-      IPlaneTypeRepository planeTypeRepository,
-      ITicketRepository ticketRepository
+      AirportDbContext dbContext
     )
     {
       _dbContext = dbContext;
-      AirhostessRepository = airhostessRepository;
-      CrewRepository = crewRepository;
-      DepartureRepository = departureRepository;
-      FlightRepository = flightRepository;
-      PilotRepository = pilotRepository;
-      PlaneRepository = planeRepository;
-      PlaneTypeRepository = planeTypeRepository;
-      TicketRepository = ticketRepository;
+      AirhostessRepository = new AirhostessRepository(dbContext);
+      CrewRepository = new CrewRepository(dbContext);
+      DepartureRepository = new DepartureRepository(dbContext);
+      FlightRepository = new FlightRepository(dbContext);
+      PilotRepository = new PilotRepository(dbContext);
+      PlaneRepository = new PlaneRepository(dbContext);
+      PlaneTypeRepository = new PlaneTypeRepository(dbContext);
+      TicketRepository = new TicketRepository(dbContext);
     }
 
     public int SaveChanges()

@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Airport.Data\Airport.Data.csproj" />
     <ProjectReference Include="..\Airport.Common\Airport.Common.csproj" />
+    <ProjectReference Include="..\Airport.MockApi\Airport.MockApi.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

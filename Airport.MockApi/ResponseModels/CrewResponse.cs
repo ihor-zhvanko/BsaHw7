@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace Airport.MockApiConnector.ResponseModels
+namespace Airport.MockApi.ResponseModels
 {
   public class CrewResponse
   {
-    public IList<AirhostessResponse> Airhostesses { get; set; }
+    public int Id { get; set; }
+    public IList<StewardessResponse> Stewardess { get; set; }
     public IList<PilotResponse> Pilot { get; set; }
   }
 }

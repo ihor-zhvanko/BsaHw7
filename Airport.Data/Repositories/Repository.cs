@@ -32,6 +32,12 @@ namespace Airport.Data.Repositories
       return entity;
     }
 
+    public virtual async Task<IList<TEntity>> CreateManyAsync(IList<TEntity> entity)
+    {
+      await _dbContext.Set<TEntity>().AddRangeAsync(entity);
+      return entity;
+    }
+
     public virtual TEntity Update(TEntity entity)
     {
       _dbContext.Update(entity);

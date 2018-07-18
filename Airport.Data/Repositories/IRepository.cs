@@ -11,6 +11,8 @@ namespace Airport.Data.Repositories
 
     Task<TEntity> CreateAsync(TEntity entity);
 
+    Task<IList<TEntity>> CreateManyAsync(IList<TEntity> entity);
+
     TEntity Update(TEntity entity);
 
     void Delete(TEntity entity);

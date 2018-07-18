@@ -27,6 +27,9 @@ using Airport.BusinessLogic.Services;
 
 using Airport.Api.Middleware;
 
+using Airport.MockApi;
+using Airport.MockApi.ResponseModels;
+
 namespace Airport.Api
 {
   public class Startup
@@ -81,6 +84,8 @@ namespace Airport.Api
       services.AddScoped<IPlaneService, PlaneService>();
       services.AddScoped<IPlaneTypeService, PlaneTypeService>();
       services.AddScoped<ITicketService, TicketService>();
+
+      services.AddScoped<IMockApiConnector, MockApiConnector>();
 
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
