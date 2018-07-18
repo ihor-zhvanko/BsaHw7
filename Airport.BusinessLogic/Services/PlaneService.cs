@@ -16,8 +16,8 @@ namespace Airport.BusinessLogic.Services
 {
   public interface IPlaneService : IService<PlaneDTO>
   {
-    IList<PlaneDetailsDTO> GetAllDetails();
-    PlaneDetailsDTO GetDetails(int id);
+    Task<IList<PlaneDetailsDTO>> GetAllDetailsAsync();
+    Task<PlaneDetailsDTO> GetDetailsAsync(int id);
   }
 
   public class PlaneService : BaseService<PlaneDTO, Plane>, IPlaneService

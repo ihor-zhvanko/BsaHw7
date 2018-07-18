@@ -15,8 +15,8 @@ namespace Airport.BusinessLogic.Services
 {
   public interface ITicketService : IService<TicketDTO>
   {
-    IList<TicketDetailsDTO> GetAllDetails();
-    TicketDetailsDTO GetDetails(int id);
+    Task<IList<TicketDetailsDTO>> GetAllDetailsAsync();
+    Task<TicketDetailsDTO> GetDetailsAsync(int id);
   }
 
   public class TicketService : BaseService<TicketDTO, Ticket>, ITicketService

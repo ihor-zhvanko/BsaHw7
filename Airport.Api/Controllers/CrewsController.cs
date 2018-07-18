@@ -37,59 +37,59 @@ namespace Airport.Api.Controllers
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
-      var entites = _crewService.GetAllDetails();
+      var entites = await _crewService.GetAllDetailsAsync();
       return Json(entites);
     }
 
     [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
-      var entites = _crewService.GetDetails(id);
+      var entites = await _crewService.GetDetailsAsync(id);
       return Json(entites);
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody]CrewInputModel value)
+    public async Task<IActionResult> Post([FromBody]CrewInputModel value)
     {
-      var validationResult = _crewInputModelValidator.Validate(value);
+      var validationResult = await _crewInputModelValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
-      var newId = _crewService.Create(value).Id;
-      _airhostessesService.AssignToCrew(value.AirhostessIds, newId);
+      var createdCrew = await _crewService.CreateAsync(value);
+      await _airhostessesService.AssignToCrewAsync(value.AirhostessIds, createdCrew.Id);
 
-      var details = _crewService.GetDetails(newId);
+      var details = await _crewService.GetDetailsAsync(createdCrew.Id);
       return Json(details);
     }
 
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody]CrewInputModel value)
+    public async Task<IActionResult> Put(int id, [FromBody]CrewInputModel value)
     {
-      var validationResult = _crewInputModelValidator.Validate(value);
+      var validationResult = await _crewInputModelValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
       value.Id = id;
 
-      _crewService.Update(value);
-      _airhostessesService.AssignToCrew(value.AirhostessIds, id);
+      await _crewService.UpdateAsync(value);
+      await _airhostessesService.AssignToCrewAsync(value.AirhostessIds, id);
 
-      var details = _crewService.GetDetails(id);
+      var details = await _crewService.GetDetailsAsync(id);
       return Json(details);
     }
 
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
-      _crewService.Delete(id);
+      await _crewService.DeleteAsync(id);
     }
 
     [HttpGet("{id}/departures")]
-    public IActionResult GetCrewDepartures(int id)
+    public async Task<IActionResult> GetCrewDepartures(int id)
     {
-      var departures = _departureService.GetByCrewId(id);
+      var departures = await _departureService.GetByCrewIdAsync(id);
       return Json(departures);
     }
   }

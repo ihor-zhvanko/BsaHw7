@@ -30,61 +30,61 @@ namespace Airport.Api.Controllers
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
-      var entites = _planeService.GetAll();
+      var entites = await _planeService.GetAllAsync();
       return Json(entites);
     }
 
     [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
-      var entites = _planeService.GetById(id);
+      var entites = await _planeService.GetByIdAsync(id);
       return Json(entites);
     }
 
     [HttpGet("details")]
-    public IActionResult GetDetails()
+    public async Task<IActionResult> GetDetails()
     {
-      var entites = _planeService.GetAllDetails();
+      var entites = await _planeService.GetAllDetailsAsync();
       return Json(entites);
     }
 
     [HttpGet("{id}/details")]
-    public IActionResult GetDetails(int id)
+    public async Task<IActionResult> GetDetails(int id)
     {
-      var entites = _planeService.GetDetails(id);
+      var entites = await _planeService.GetDetailsAsync(id);
       return Json(entites);
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody]PlaneDTO value)
+    public async Task<IActionResult> Post([FromBody]PlaneDTO value)
     {
-      var validationResult = _planeModelValidator.Validate(value);
+      var validationResult = await _planeModelValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
-      var entity = _planeService.Create(value);
+      var entity = await _planeService.CreateAsync(value);
       return Json(entity);
     }
 
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody]PlaneDTO value)
+    public async Task<IActionResult> Put(int id, [FromBody]PlaneDTO value)
     {
-      var validationResult = _planeModelValidator.Validate(value);
+      var validationResult = await _planeModelValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
       value.Id = id;
-      var entity = _planeService.Update(value);
+      var entity = await _planeService.UpdateAsync(value);
 
       return Json(entity);
     }
 
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
-      _planeService.Delete(id);
+      await _planeService.DeleteAsync(id);
     }
   }
 }

@@ -30,47 +30,47 @@ namespace Airport.Api.Controllers
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
-      var entites = _planeTypeService.GetAll();
+      var entites = await _planeTypeService.GetAllAsync();
       return Json(entites);
     }
 
     [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
-      var entites = _planeTypeService.GetById(id);
+      var entites = await _planeTypeService.GetByIdAsync(id);
       return Json(entites);
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody]PlaneTypeDTO value)
+    public async Task<IActionResult> Post([FromBody]PlaneTypeDTO value)
     {
-      var validationResult = _planeTypeModelValidator.Validate(value);
+      var validationResult = await _planeTypeModelValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
-      var entity = _planeTypeService.Create(value);
+      var entity = await _planeTypeService.CreateAsync(value);
       return Json(entity);
     }
 
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody]PlaneTypeDTO value)
+    public async Task<IActionResult> Put(int id, [FromBody]PlaneTypeDTO value)
     {
-      var validationResult = _planeTypeModelValidator.Validate(value);
+      var validationResult = await _planeTypeModelValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
       value.Id = id;
-      var entity = _planeTypeService.Update(value);
+      var entity = await _planeTypeService.UpdateAsync(value);
 
       return Json(entity);
     }
 
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
-      _planeTypeService.Delete(id);
+      await _planeTypeService.DeleteAsync(id);
     }
   }
 }

@@ -49,7 +49,7 @@ namespace Airport.Data.MockData
     private IList<TModel> Read<TModel>()
     {
       var filename = typeof(TModel).Name + ".json";
-      var text = File.ReadAllText("/Seed/" + filename);
+      var text = File.ReadAllText("./Seed/" + filename);
       return JsonConvert.DeserializeObject<IList<TModel>>(text);
     }
 

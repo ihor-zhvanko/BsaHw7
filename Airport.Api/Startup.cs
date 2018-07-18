@@ -60,6 +60,7 @@ namespace Airport.Api
       services.AddSingleton<IValidator<PlaneDTO>, PlaneDTOValidator>();
       services.AddSingleton<IValidator<PlaneTypeDTO>, PlaneTypeDTOValidator>();
       services.AddSingleton<IValidator<TicketDTO>, TicketDTOValidator>();
+      services.AddSingleton<IValidator<CrewDTO>, CrewDTOValidator>();
 
       services.AddScoped<IAirhostessRepository, AirhostessRepository>();
       services.AddScoped<ICrewRepository, CrewRepository>();

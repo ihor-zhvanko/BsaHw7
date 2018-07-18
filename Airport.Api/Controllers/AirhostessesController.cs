@@ -31,51 +31,51 @@ namespace Airport.Api.Controllers
 
     // GET api/airhostesses
     [HttpGet]
-    public IActionResult Get()
+    public async Task<IActionResult> Get()
     {
-      var entites = _airhostessesService.GetAll();
+      var entites = await _airhostessesService.GetAllAsync();
       return Json(entites);
     }
 
     // GET api/values/5
     [HttpGet("{id}")]
-    public IActionResult Get(int id)
+    public async Task<IActionResult> Get(int id)
     {
-      var entites = _airhostessesService.GetById(id);
+      var entites = await _airhostessesService.GetByIdAsync(id);
       return Json(entites);
     }
 
     // POST api/values
     [HttpPost]
-    public IActionResult Post([FromBody]AirhostessDTO value)
+    public async Task<IActionResult> Post([FromBody]AirhostessDTO value)
     {
-      var validationResult = _airhostessValidator.Validate(value);
+      var validationResult = await _airhostessValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
-      var entity = _airhostessesService.Create(value);
+      var entity = await _airhostessesService.CreateAsync(value);
       return Json(entity);
     }
 
     // PUT api/values/5
     [HttpPut("{id}")]
-    public IActionResult Put(int id, [FromBody]AirhostessDTO value)
+    public async Task<IActionResult> Put(int id, [FromBody]AirhostessDTO value)
     {
-      var validationResult = _airhostessValidator.Validate(value);
+      var validationResult = await _airhostessValidator.ValidateAsync(value);
       if (!validationResult.IsValid)
         throw new BadRequestException(validationResult.Errors);
 
       value.Id = id;
-      var entity = _airhostessesService.Update(value);
+      var entity = await _airhostessesService.UpdateAsync(value);
 
       return Json(entity);
     }
 
     // DELETE api/values/5
     [HttpDelete("{id}")]
-    public void Delete(int id)
+    public async Task Delete(int id)
     {
-      _airhostessesService.Delete(id);
+      await _airhostessesService.DeleteAsync(id);
     }
   }
 }
