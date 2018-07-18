@@ -62,8 +62,9 @@ namespace Airport.BusinessLogic.Services
       {
         Func<IList<TDTO>> lambdaToDelay = () =>
         {
-          IList<TEntity> ents = _unitOfWork.Set<TEntity>().GetAsync().Result;
-          return Mapper.Map<IList<TDTO>>(ents);
+          var task = _unitOfWork.Set<TEntity>().GetAsync();
+          task.Wait();
+          return Mapper.Map<IList<TDTO>>(task.Result);
         };
         return await MegaDelayHelper.DoFakeDelayUsingTimer(2, lambdaToDelay);
       }

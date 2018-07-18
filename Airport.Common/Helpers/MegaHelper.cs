@@ -16,7 +16,7 @@ namespace Airport.Common.Helpers
       var timeCompletionSource = new TaskCompletionSource<TReturn>();
       var delay = delaySeconds * 1000;
 
-      var timer = new Timer();
+      var timer = new Timer(delay);
 
       timer.Elapsed += (x, y) =>
       {
@@ -31,6 +31,8 @@ namespace Airport.Common.Helpers
           timeCompletionSource.SetException(e);
         }
       };
+
+      timer.Start();
 
       return timeCompletionSource.Task;
     }
