@@ -92,13 +92,5 @@ namespace Airport.Api.Controllers
       var departures = await _departureService.GetByCrewIdAsync(id);
       return Json(departures);
     }
-
-    [HttpGet("load")]
-    public async Task<IActionResult> LoadCrews()
-    {
-      var syncedCrews = await _crewService.LoadCrewsFromMockApi();
-
-      return Json(syncedCrews);
-    }
   }
 }

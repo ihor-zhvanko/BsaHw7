@@ -27,9 +27,6 @@ using Airport.BusinessLogic.Services;
 
 using Airport.Api.Middleware;
 
-using Airport.MockApi;
-using Airport.MockApi.ResponseModels;
-
 namespace Airport.Api
 {
   public class Startup
@@ -45,6 +42,8 @@ namespace Airport.Api
     public void ConfigureServices(IServiceCollection services)
     {
       MapperConfig.InitMappers();
+
+      services.AddCors();
 
       services.AddSingleton<DataSource>();
 
@@ -85,8 +84,6 @@ namespace Airport.Api
       services.AddScoped<IPlaneTypeService, PlaneTypeService>();
       services.AddScoped<ITicketService, TicketService>();
 
-      services.AddScoped<IMockApiConnector, MockApiConnector>();
-
       services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
     }
 
@@ -97,6 +94,13 @@ namespace Airport.Api
       {
         app.UseDeveloperExceptionPage();
       }
+
+      app.UseCors(builder =>
+        builder.WithOrigins("http://localhost:4200")
+          .AllowAnyHeader()
+          .AllowCredentials()
+          .AllowAnyMethod()
+      );
 
       app.UseErrorHandlingMiddleware();
       app.UseMvc();

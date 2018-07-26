@@ -58,17 +58,6 @@ namespace Airport.BusinessLogic.Services
 
     public virtual async Task<IList<TDTO>> GetAllAsync()
     {
-      if (typeof(TDTO) == typeof(FlightDTO))
-      {
-        Func<IList<TDTO>> lambdaToDelay = () =>
-        {
-          var task = _unitOfWork.Set<TEntity>().GetAsync();
-          task.Wait();
-          return Mapper.Map<IList<TDTO>>(task.Result);
-        };
-        return await MegaDelayHelper.DoFakeDelayUsingTimer(2, lambdaToDelay);
-      }
-
       var entities = await _unitOfWork.Set<TEntity>().GetAsync();
       return Mapper.Map<IList<TDTO>>(entities);
     }

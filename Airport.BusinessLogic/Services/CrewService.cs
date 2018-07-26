@@ -13,7 +13,6 @@ using Airport.Common.Exceptions;
 using Airport.Data.Models;
 using Airport.Data.UnitOfWork;
 
-using Airport.MockApi;
 
 namespace Airport.BusinessLogic.Services
 {
@@ -21,22 +20,17 @@ namespace Airport.BusinessLogic.Services
   {
     Task<IList<CrewDetailsDTO>> GetAllDetailsAsync();
     Task<CrewDetailsDTO> GetDetailsAsync(int id);
-    Task<IList<CrewDetailsDTO>> LoadCrewsFromMockApi();
   }
 
   public class CrewService : BaseService<CrewDTO, Crew>, ICrewService
   {
-    IMockApiConnector _mockApiConnector;
 
     public CrewService(
       IUnitOfWork unitOfWork,
-      IValidator<CrewDTO> crewDTOValidator,
-      IMockApiConnector mockApiConnector
+      IValidator<CrewDTO> crewDTOValidator
     )
       : base(unitOfWork, crewDTOValidator)
-    {
-      _mockApiConnector = mockApiConnector;
-    }
+    { }
 
     public async Task<IList<CrewDetailsDTO>> GetAllDetailsAsync()
     {
@@ -55,49 +49,6 @@ namespace Airport.BusinessLogic.Services
         throw new NotFoundException("Crew with such id was not found");
       }
       return CrewDetailsDTO.Create(crew);
-    }
-
-    public async Task<IList<CrewDetailsDTO>> LoadCrewsFromMockApi()
-    {
-      //TODO: I will refactor this shit later. Reason: Deadline 
-      var crewResponse = await _mockApiConnector.GetCrews();
-      var newCrews = crewResponse.Select(x =>
-      {
-        var pilot = x.Pilot.First();
-        var newCrew = new Crew
-        {
-          Pilot = new Pilot
-          {
-            FirstName = pilot.FirstName,
-            LastName = pilot.LastName,
-            BirthDate = pilot.BirthDate,
-            Experience = pilot.Exp
-          },
-          Airhostesses = x.Stewardess.Select(y => new Airhostess
-          {
-            FirstName = y.FirstName,
-            LastName = y.LastName,
-            BirthDate = y.BirthDate
-          }).ToList()
-        };
-
-        return newCrew;
-      }).ToList();
-      var created = await _unitOfWork.CrewRepository.CreateManyAsync(newCrews);
-
-      var saveChangesTask = _unitOfWork.SaveChangesAsync();
-
-      var newCrewsCsvLines = crewResponse.Select(x =>
-        $"{x.Id},{x.Pilot.First().FirstName},{x.Pilot.First().LastName},{x.Stewardess.Count}"
-      );
-
-      var currentDate = DateTime.Now.ToString("dd.MM.yyyy");
-      var currentTime = DateTime.Now.ToString("H.mm.ss");
-      var writeFileTask = File.WriteAllLinesAsync($"log_{currentDate}_{currentTime}.txt", newCrewsCsvLines);
-
-      await Task.WhenAll(new[] { saveChangesTask, writeFileTask });
-
-      return await created.ToAsyncEnumerable().Select(CrewDetailsDTO.Create).ToList();
     }
   }
 }
